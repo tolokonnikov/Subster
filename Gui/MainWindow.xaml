@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button x:Name="btnSelectFile" Content="Select file..." HorizontalAlignment="Left" Margin="172,229,0,0" VerticalAlignment="Top" Click="btnSelectFile_Click"/>
+        <Button x:Name="btnRun" Content="Run" HorizontalAlignment="Left" Margin="439,287,0,0" VerticalAlignment="Top" Click="btnRun_Click"/>
 
     </Grid>
 </Window>

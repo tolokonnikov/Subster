@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Subtitles;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +37,11 @@ namespace Gui
                 // Обробка вибраного файлу
                 // Наприклад, відкриття файлу та читання його вмісту
             }
+        }
+
+        private void btnRun_Click(object sender, RoutedEventArgs e)
+        {
+            new MPlayer().GetSubtitlesListFromMKV();
         }
     }
 }
