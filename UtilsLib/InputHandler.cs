@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace Subtitles
 {
-    public class InputHendler
+    public class InputHandler
     {
         private static readonly string _inputPath = @"D:\movies\series\Bosch (2014) Season 1-7 S01-S07 (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 5.1 Ghost)\Season 3\subs01.srt";
         private static readonly string _outputPath = @"D:\movies\series\Bosch (2014) Season 1-7 S01-S07 (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 5.1 Ghost)\Season 3\subs01_Google.srt";
@@ -10,7 +10,7 @@ namespace Subtitles
         private static readonly string _numberPattern = @"\b([1-9]|[1-9]\d{1,3}|9999)\b";
         private Subs _inputSubs = new Subs();
 
-        public InputHendler()
+        public InputHandler()
         {
             _inputSubs = GetInputSubs();
         }
@@ -67,10 +67,6 @@ namespace Subtitles
                     }
                 }
 
-                //Console.WriteLine(lines[i]);
-                //sw.WriteLine(lines[i]);
-
-                //Pass the filepath and filename to the StreamWriter Constructor
                 using StreamWriter sw = new StreamWriter(_outputPath);
 
                 foreach (var ln in preRes)
