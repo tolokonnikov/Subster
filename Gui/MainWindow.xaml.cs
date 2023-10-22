@@ -21,7 +21,7 @@ namespace Gui
         private void btnSelectFile_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "MKV files (*.mkv)|*.mkv|Усі файли (*.*)|*.*";
+            openFileDialog.Filter = "mkv files (*.mkv)|*.mkv|all files (*.*)|*.*";
 
             if (openFileDialog.ShowDialog() == true)
             {
