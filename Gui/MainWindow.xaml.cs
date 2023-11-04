@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 using Subtitles;
-using System.Windows;
 using System.IO;
+using System.Windows;
 
 namespace Gui
 {
@@ -13,9 +13,12 @@ namespace Gui
         private string _selectedFileName = string.Empty;
         private string _selectedFilePath = string.Empty;
         private string? _selectedDirectory = string.Empty;
-        public MainWindow()
+        private readonly IGetSubtitlesFromMKV _subtitlesFromMKV;
+
+        public MainWindow(IGetSubtitlesFromMKV subtitlesFromMKV)
         {
             InitializeComponent();
+            _subtitlesFromMKV = subtitlesFromMKV;
         }
 
         private void btnSelectFile_Click(object sender, RoutedEventArgs e)
@@ -44,7 +47,7 @@ namespace Gui
         {
             if (!string.IsNullOrEmpty(_selectedDirectory))
             {
-                new MPlayer().GetSubtitlesListFromMKV(_selectedFileName, _selectedDirectory);
+                _subtitlesFromMKV.GetSubtitlesListFromMKV(_selectedFileName, _selectedDirectory);
             }
         }
     }
