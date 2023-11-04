@@ -49,7 +49,7 @@ namespace TestProject
         public void Test_ConvertStringsToSubs_ValidInput()
         {
             //Act
-            Subs subs = _converter.GetSubs(_subsName, _inputStrings);
+            Subs subs = _converter.ConvertLinesToSub(_subsName, _inputStrings);
 
             //Assert
             Assert.IsNotNull(subs);
@@ -68,7 +68,7 @@ namespace TestProject
             var subsName = string.Empty;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => _converter.GetSubs(subsName, inputStrings));
+            Assert.Throws<ArgumentNullException>(() => _converter.ConvertLinesToSub(subsName, inputStrings));
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace TestProject
             string[] inputStrings = new string[0];
 
             // Assert
-             Assert.Throws<ArgumentException>(() => _converter.GetSubs(string.Empty, inputStrings));
+             Assert.Throws<ArgumentException>(() => _converter.ConvertLinesToSub(string.Empty, inputStrings));
         }
 
         [Test]
@@ -86,7 +86,7 @@ namespace TestProject
             string[] inputStrings = new string[] { "1", "Invalid Timestamp", "Line 1", "Line 2" };
 
             // Act & Assert
-            Assert.Throws<FormatException>(() => _converter.GetSubs(string.Empty, inputStrings));
+            Assert.Throws<FormatException>(() => _converter.ConvertLinesToSub(string.Empty, inputStrings));
         }
 
         [Test]
@@ -95,7 +95,7 @@ namespace TestProject
             string[] inputStrings = new string[] { "0A", "00:45:59,382 --> 00:46:00,800", "Line 1", "Line 2" };
 
             // Act & Assert
-            Assert.Throws<FormatException>(() => _converter.GetSubs(string.Empty, inputStrings));
+            Assert.Throws<FormatException>(() => _converter.ConvertLinesToSub(string.Empty, inputStrings));
         }
 
         //var mockFileReader = new Mock<IFileReader>();

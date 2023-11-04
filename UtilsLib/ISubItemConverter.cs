@@ -4,6 +4,6 @@ namespace UtilsLib
 {
     public interface ISubItemConverter
     {
-        Subs GetSubs(string? name, string[] strings);
+        Subs ConvertLinesToSub(string? name, string[] strings);
     }
 }

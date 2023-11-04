@@ -7,15 +7,15 @@ namespace UtilsLib
     {
         string _timeStampPattern = @"^\d{2}:\d{2}:\d{2},\d{3}\s-->\s\d{2}:\d{2}:\d{2},\d{3}$";
 
-        public Subs GetSubs(string? name, string[] strings)
+        public Subs ConvertLinesToSub(string? name, string[] lines)
         {
-            if (strings == null)
+            if (lines == null)
                 throw new ArgumentNullException("Argument \"strings\" is null!");
 
-            if (strings.Length == 0)
+            if (lines.Length == 0)
                 throw new ArgumentException("Argument \"strings\" length is 0!");
 
-            if (!int.TryParse(strings[0], out var index))
+            if (!int.TryParse(lines[0], out var index))
                 throw new FormatException("Argument \"First ID\" is incorrect format");
 
             var res = new Subs() { Name = name };
@@ -25,9 +25,9 @@ namespace UtilsLib
             List<List<string>> subArrays = new List<List<string>>();
             List<string> currentSubArray = new List<string>();
 
-            for (var i = 0; i < strings.Length; i++)
+            for (var i = 0; i < lines.Length; i++)
             {
-                if (strings[i] == delimeter)
+                if (lines[i] == delimeter)
                 {
                     if (currentSubArray.Count > 0)
                     {
@@ -37,7 +37,7 @@ namespace UtilsLib
                 }
                 else
                 {
-                    currentSubArray.Add(strings[i]);
+                    currentSubArray.Add(lines[i]);
                 }
             }
 
