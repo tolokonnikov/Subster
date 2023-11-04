@@ -77,7 +77,7 @@ namespace TestProject
             string[] inputStrings = new string[0];
 
             // Assert
-             Assert.Throws<ArgumentException>(() => _converter.GetSubs(string.Empty, inputStrings));
+            Assert.Throws<ArgumentException>(() => _converter.GetSubs(string.Empty, inputStrings));
         }
 
         [Test]

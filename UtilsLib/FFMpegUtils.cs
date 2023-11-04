@@ -3,7 +3,7 @@ using UtilsLib;
 
 namespace Subtitles
 {
-    public class MPlayer
+    public class FFMpegUtils : IGetSubtitlesFromMKV
     {
         private readonly string _srtExtension = "srt";
         private readonly string _ffmpeg = "ffmpeg";
