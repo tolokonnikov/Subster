@@ -1,5 +1,7 @@
 ﻿using Subtitles;
 using UtilsLib;
+using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.CompilerServices;
 
 namespace TestProject
 {
@@ -9,11 +11,16 @@ namespace TestProject
         string _subsName = "Subs Name";
         string[] _inputStrings = Array.Empty<string>();
 
+        public Tests(ISubItemConverter converter)
+        {
+            _converter = converter;
+        }
+
         [SetUp]
         public void Setup()
         {
             // Arrange
-            _converter = new SubItemConverter();
+            //_converter = new SubItemConverter();
             _inputStrings = new string[]
             {
                   "889",
