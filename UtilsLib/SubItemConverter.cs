@@ -1,4 +1,5 @@
 ﻿using Subtitles;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace UtilsLib
@@ -76,6 +77,63 @@ namespace UtilsLib
             }
 
             return res;
+        }
+
+        public List<string> ConvertSubsToSentences(Subs subs)
+        {
+            var res = new List<string>();
+
+            var currentSentence = string.Empty;
+
+            foreach (var sub in subs.Items)
+            {
+                foreach (var line in sub.Lines)
+                {
+                    if (IsEndOfLineCharacter(line[line.Length - 1]))
+                    {
+                        if (string.IsNullOrEmpty(currentSentence))
+                        {
+                            res.Add(line);
+                        }
+                        else
+                        {
+                            currentSentence += " " + line;
+                            res.Add(currentSentence);
+                            currentSentence = string.Empty;
+                        }
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(currentSentence))
+                        {
+                            currentSentence += line;
+                        }
+                        else
+                        {
+                            currentSentence += " " + line;
+                        }
+                    }
+                }
+            }
+
+            return res;
+        }
+
+        private bool IsEndOfLineCharacter(char v)
+        {
+            if (v == '.')
+                return true;
+
+            if (v == '!')
+                return true;
+
+            if (v == '?')
+                return true;
+
+            if (v == ')')
+                return true;
+
+            return false;
         }
     }
 }
